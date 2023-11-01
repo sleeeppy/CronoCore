@@ -12,17 +12,22 @@ public class SimpleCharacterController : MonoBehaviour
     Camera characterCamera;
 
     public GameObject bulletPrefab;
+    float FireCool;
 
     void Fire()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (FireCool > 0.2f)
+        {
+            if (Input.GetMouseButton(0))
+            {   // 플레이어의 좌표와 겹치게 총알이 소환될 경우 플레이어에게 데미지를 줄 수 있기 때문에 조금 앞에서 소환함
+                Vector3 firePos = transform.position + animator.transform.forward + new Vector3(0f, 0.5f, 0f);
+                // 총알을 firePos에 생성, 생성된 총알 객체를 반환해 Bullet에 저장
+                var bullet = Instantiate(bulletPrefab, firePos, Quaternion.identity).GetComponent<Bullet>();
+                // Bullet 스크립트의 Fire 메서드 호출, 전방으로 총알이 나감
+                bullet.Fire(animator.transform.forward);
 
-        {   // 플레이어의 좌표와 겹치게 총알이 소환될 경우 플레이어에게 데미지를 줄 수 있기 때문에 조금 앞에서 소환함
-            Vector3 firePos = transform.position + animator.transform.forward + new Vector3(0f, 0.5f, 0f);
-            // 총알을 firePos에 생성, 생성된 총알 객체를 반환해 Bullet에 저장
-            var bullet = Instantiate(bulletPrefab, firePos, Quaternion.identity).GetComponent<Bullet>();
-            // Bullet 스크립트의 Fire 메서드 호출, 전방으로 총알이 나감
-            bullet.Fire(animator.transform.forward);
+                FireCool = 0f;
+            }
         }
     }
 
@@ -35,6 +40,7 @@ public class SimpleCharacterController : MonoBehaviour
     {
         Move();
         Zoom();
+        FireCool += Time.deltaTime;
     }
 
     public void LookMouseCursor()
