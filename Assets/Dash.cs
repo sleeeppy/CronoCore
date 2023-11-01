@@ -34,9 +34,8 @@ public class Dash : MonoBehaviour
         while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * dashSpeed);
+            yield return null;
         }
         isDashing = false;
-
-        yield return null;
     }
 }
