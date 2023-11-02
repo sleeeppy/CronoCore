@@ -11,7 +11,6 @@ public class SkillButtonQ : MonoBehaviour
 
     void Start()
     {
-
         imgCool.fillAmount = 0; // Cool 이미지 초기 설정
     }
     public void Update()
