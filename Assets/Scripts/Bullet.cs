@@ -29,9 +29,9 @@ public class Bullet : MonoBehaviour
         isFire = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collider)
     {
-        if(other.GetComponent<Bullet>() == null)
+        if(collider.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
         }
