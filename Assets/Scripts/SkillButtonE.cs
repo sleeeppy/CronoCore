@@ -31,35 +31,24 @@ public class SkillButtonE : MonoBehaviour
             // Cool 이미지의 fillAmount가 0보다 크면 쿨타임이 끝나지 않았다는 뜻
             if (imgCool.fillAmount > 0) return;
 
-            Ray ray = characterCamera.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hitResult;
-
-            if (Physics.Raycast(ray, out hitResult))
-            {
-                StartCoroutine(Dashing(hitResult));
-            }
-
+                StartCoroutine(Dashing());
 
             // 스킬 Cool 관리 Couroutine
             StartCoroutine(SC_Cool());
         }
     }
-    IEnumerator Dashing(RaycastHit hitResult)
+    IEnumerator Dashing()
     {
         isDashing = true;
 
-        // 캐릭터의 위치를 기준으로 마우스 커서와의 방향 벡터를 계산합니다.
-        Vector3 mouseDir = new Vector3(hitResult.point.x, transform.position.y, hitResult.point.z) - transform.position;
-
-        Vector3 targetPosition = transform.position + mouseDir.normalized * dashDistance; // 방향 벡터를 정규화하여 거리만큼만 이동
+        Vector3 dashDirection = animator.transform.forward;
+        Vector3 targetPosition = transform.position + dashDirection * dashDistance;
 
         while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
-            transform.position += mouseDir.normalized * dashSpeed * Time.deltaTime; // 방향 벡터를 정규화하여 이동
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * dashSpeed);
             yield return null;
         }
-
         isDashing = false;
     }
 

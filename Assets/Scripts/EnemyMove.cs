@@ -7,6 +7,8 @@ public class EnemyMove : MonoBehaviour
     public float speed;
     public Rigidbody target;
 
+    public bool isMove = true;
+
     private bool isLive = true;
     private Rigidbody rigid;
 
@@ -17,9 +19,12 @@ public class EnemyMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isLive)
+        if (isMove)
         {
-            MoveTowardsTarget();
+            if (isLive)
+            {
+                MoveTowardsTarget();
+            }
         }
     }
     void MoveTowardsTarget()
@@ -37,5 +42,15 @@ public class EnemyMove : MonoBehaviour
         }
 
         rigid.velocity = Vector3.zero;
+    }
+
+    public void TimeStop()
+    {
+        isMove = false;
+    }
+
+    public void MoveTrue()
+    {
+        isMove = true;
     }
 }

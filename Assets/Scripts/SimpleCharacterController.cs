@@ -13,6 +13,7 @@ public class SimpleCharacterController : MonoBehaviour
 
     public GameObject bulletPrefab;
     float FireCool;
+    public float MoveSpeed = 10f;    
 
     void Fire()
     {
@@ -53,20 +54,27 @@ public class SimpleCharacterController : MonoBehaviour
             animator.transform.forward = mouseDir;
         }
     }
-    public void Move()
-    {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
 
-        Vector3 moveVector = new Vector3(moveX, 0f, moveZ);
+    private void Move()
+    {
+        float movex = Input.GetAxis("Horizontal");
+        float movez = Input.GetAxis("Vertical");
+
+        Vector3 Position = transform.position;
+
+        Position.x += movex * Time.deltaTime * MoveSpeed;
+        Position.z += movez * Time.deltaTime * MoveSpeed;
+
+        LookMouseCursor();
+        Fire();
+
+        Vector3 moveVector = new Vector3(movex, 0f, movez);
         // 무브 벡터의 길이가 0이 아니면 키 입력이 들어오는 것으로 판정
         bool isMove = moveVector.magnitude > 0;
         // 애니메이터의 isMove의 값을 무브 벡터의 길이에 따라서 바뀌도록 함
         animator.SetBool("isMove", isMove);
-        LookMouseCursor();
-        Fire();
-        // 유니티 엔진 1 단위는 1미터
-        transform.Translate(new Vector3(moveX, 0f, moveZ).normalized * Time.deltaTime * 5f);
+
+        transform.position = Position;
     }
 
     public void Zoom()
