@@ -12,12 +12,13 @@ public class SimpleCharacterController : MonoBehaviour
     Camera characterCamera;
 
     public GameObject bulletPrefab;
-    float FireCool;
-    public float MoveSpeed = 10f;    
+    public float FireCool;
+    public float MoveSpeed = 10f;
+    public float FireCoolSet = 0.2f;
 
     void Fire()
     {
-        if (FireCool > 0.2f)
+        if (FireCool > FireCoolSet)
         {
             if (Input.GetMouseButton(0))
             {   // 플레이어의 좌표와 겹치게 총알이 소환될 경우 플레이어에게 데미지를 줄 수 있기 때문에 조금 앞에서 소환함
@@ -46,7 +47,7 @@ public class SimpleCharacterController : MonoBehaviour
 
     public void LookMouseCursor()
     {     
-        Ray ray = characterCamera.ScreenPointToRay(Input.mousePosition);
+           Ray ray = characterCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitResult;
         if (Physics.Raycast(ray, out hitResult))
         {
@@ -80,8 +81,8 @@ public class SimpleCharacterController : MonoBehaviour
     public void Zoom()
     {
         // 마우스 스크롤 값을 받아옴
-        var scroll = Input.mouseScrollDelta;
+        var scroll = Input.mouseScrollDelta * 1.5f;
         // 시야 왜곡을 방지하기 위해서 30~70 사이의 값으로 fieldOfView를 고정해줌
-        characterCamera.fieldOfView = Mathf.Clamp(characterCamera.fieldOfView - scroll.y, 30f, 70f);
+        characterCamera.fieldOfView = Mathf.Clamp(characterCamera.fieldOfView - scroll.y, 30f, 80f);
     }
 }

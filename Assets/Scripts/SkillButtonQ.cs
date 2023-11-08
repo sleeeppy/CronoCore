@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,16 +12,13 @@ public class SkillButtonQ : MonoBehaviour
 
     public bool Use = false;
 
-    EnemyMove enemy;
-
     void Start()
     {
-        enemy = FindObjectOfType<EnemyMove>();
         imgCool.fillAmount = 0; // Cool 이미지 초기 설정
     }
+
     public void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (!Use)
@@ -29,15 +27,28 @@ public class SkillButtonQ : MonoBehaviour
                 if (imgCool.fillAmount > 0) return;
 
                 Use = true;
-                enemy.TimeStop();
-                Invoke("Stop", 5.0f);
 
-                // 스킬 Cool 관리 Couroutine
+                // 에너미무브 스크립트를 가진 모든 오브젝트에 대해 동작 수행
+                EnemyMove[] enemies = FindObjectsOfType<EnemyMove>();
+                foreach (EnemyMove enemy in enemies)
+                {
+                    enemy.TimeStop();
+                }
+
+                Invoke("Stop", 2.5f);
+
+                // 스킬 Cool 관리 Coroutine
                 StartCoroutine(SC_Cool());
             }
             else
             {
-                enemy.MoveTrue();
+                // 에너미무브 스크립트를 가진 모든 오브젝트에 대해 동작 수행
+                EnemyMove[] enemies = FindObjectsOfType<EnemyMove>();
+                foreach (EnemyMove enemy in enemies)
+                {
+                    enemy.MoveTrue();
+                }
+
                 Use = false;
             }
         }
@@ -45,7 +56,13 @@ public class SkillButtonQ : MonoBehaviour
 
     public void Stop()
     {
-        enemy.MoveTrue();
+        // 에너미무브 스크립트를 가진 모든 오브젝트에 대해 동작 수행
+        EnemyMove[] enemies = FindObjectsOfType<EnemyMove>();
+        foreach (EnemyMove enemy in enemies)
+        {
+            enemy.MoveTrue();
+        }
+
         Use = false;
     }
 

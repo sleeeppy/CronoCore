@@ -19,14 +19,12 @@ public class EnemyMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isMove)
+        if (isLive && isMove)
         {
-            if (isLive)
-            {
-                MoveTowardsTarget();
-            }
+            MoveTowardsTarget();
         }
     }
+
     void MoveTowardsTarget()
     {
         Vector3 direction = (target.position - rigid.position).normalized;
