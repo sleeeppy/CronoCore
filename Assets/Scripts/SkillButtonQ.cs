@@ -69,7 +69,7 @@ public class SkillButtonQ : MonoBehaviour
     IEnumerator SC_Cool()
     {
         // skill.cool 값에 따라 달라짐
-        float tick = 1f;
+        float tick = 0.25f;
         float t = 0;
 
         imgCool.fillAmount = 1;

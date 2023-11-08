@@ -11,9 +11,14 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
+        // Rigidbody 컴포넌트를 추가하여 물리적인 충돌을 처리할 수 있도록 합니다.
+        // Rigidbody 컴포넌트는 IsTrigger를 사용하기 위해 필요합니다.
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true; // 물리적인 영향을 받지 않도록 설정
+        rb.useGravity = false; // 중력 영향을 받지 않도록 설정
+
         Destroy(gameObject, 3f);
     }
-
 
     void Update()
     {
@@ -29,9 +34,9 @@ public class Bullet : MonoBehaviour
         isFire = true;
     }
 
-    private void OnCollisionEnter(Collision collider)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collider.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
         }
