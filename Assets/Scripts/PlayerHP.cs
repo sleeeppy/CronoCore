@@ -20,7 +20,7 @@ public class PlayerHP : MonoBehaviour
     {
         HPbar.value = currentHP / maxHP;
 
-        if (currentHP == 0)
+        if (currentHP <= 0)
         {
             SceneManager.LoadScene(1);
         }
