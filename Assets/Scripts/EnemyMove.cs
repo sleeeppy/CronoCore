@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public float speed;
-    public Rigidbody target;
+    private Rigidbody target;
 
     public bool isMove = true;
 
@@ -15,6 +15,7 @@ public class EnemyMove : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        target = GameObject.Find("Player").GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()

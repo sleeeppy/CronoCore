@@ -1,13 +1,52 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Core : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    public bool Dest = false;
+    public GameObject UI;
+
+    void Start()
     {
-        if (collision.gameObject.CompareTag("Character"))
+        Dest = false;
+        UI = GameObject.Find("GetCore");
+    }
+
+    private void Update()
+    {
+        if (Dest)
         {
-            // 플레이어와 충돌하면 코어를 파괴합니다.
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Character"))
+        {
+            UI.GetComponent<CoreUI>().tmp.text = "[F] 줍기";
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Character"))
+        {
+            UI.GetComponent<CoreUI>().tmp.text = "";
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Character"))
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                UI.GetComponent<CoreUI>().tmp.text = "";
+                Destroy(gameObject);
+            }
         }
     }
 }

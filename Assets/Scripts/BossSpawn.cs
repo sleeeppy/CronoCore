@@ -5,7 +5,6 @@ using UnityEngine;
 public class BossSpawn : MonoBehaviour
 {
     public GameObject Boss;
-    public GameObject player;
     public bool SetOn = false;
 
     // Update is called once per frame
@@ -15,16 +14,15 @@ public class BossSpawn : MonoBehaviour
         {
             if (transform.GetChild(0).name == "end")
             {
-                Invoke("Set", 1f);
                 SetOn = true;
+                Invoke("Set", 1f);
             }
         }
     }
 
     void Set()
     {
-        Boss.SetActive(true);
-        Boss.transform.position = new Vector3(player.transform.position.x, Boss.transform.position.y, player.transform.position.z - 15);
+        Instantiate(Boss, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
