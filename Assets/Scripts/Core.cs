@@ -5,21 +5,11 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class Core : MonoBehaviour
 {
-    public bool Dest = false;
-    public GameObject UI;
+    private GameObject UI;
 
     void Start()
     {
-        Dest = false;
         UI = GameObject.Find("GetCore");
-    }
-
-    private void Update()
-    {
-        if (Dest)
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void OnTriggerEnter(Collider other)

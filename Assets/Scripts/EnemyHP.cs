@@ -5,18 +5,15 @@ using UnityEngine;
 public class EnemyHP : MonoBehaviour
 {
     public int enemyHP = 10;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    private GameObject Gauge;
 
     // Update is called once per frame
     void Update()
     {
         if (enemyHP <= 0)
         {
+            Gauge = GameObject.Find("CoreGauge");
+            Gauge.GetComponent<CronoCoreLevel>().currentGauge += 1;
             Destroy(this.gameObject);
         }
     }

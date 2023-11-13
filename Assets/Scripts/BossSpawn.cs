@@ -5,24 +5,55 @@ using UnityEngine;
 public class BossSpawn : MonoBehaviour
 {
     public GameObject Boss;
-    public bool SetOn = false;
+    private bool SetOn = false;
+    public bool TimeOut = false;
+    private bool TimeSpawn = false;
+    public GameObject InvTime;
+    public GameObject CoreLevel;
+
+    private void Start()
+    {
+        for (int i = 0; transform.GetChild(i).name != "end"; i++)
+        {
+            CoreLevel.GetComponent<CronoCoreLevel>().MaxGauge = i + 1;
+            CoreLevel.GetComponent<CronoCoreLevel>().CoreGauge.maxValue = i + 1;
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (!SetOn)
+        if (TimeOut && !TimeSpawn && !SetOn)
         {
-            if (transform.GetChild(0).name == "end")
+            TimeSpawn = true;
+            Invoke("TimeOutSet", 1f);
+        }
+
+        if (!SetOn && transform.GetChild(0).name == "end")
+        {
+            if (!TimeOut)
             {
                 SetOn = true;
                 Invoke("Set", 1f);
             }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
+    }
+
+    void TimeOutSet()
+    {
+        Instantiate(Boss, transform.position, Quaternion.identity);
+        CoreLevel.GetComponent<CronoCoreLevel>().currentGauge = -1;
     }
 
     void Set()
     {
         Instantiate(Boss, transform.position, Quaternion.identity);
+        InvTime.GetComponent<TimeManager>().InvTimeOn = true;
+        CoreLevel.GetComponent<CronoCoreLevel>().currentGauge = -1;
         Destroy(gameObject);
     }
 }

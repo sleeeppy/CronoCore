@@ -10,7 +10,7 @@ public class SkillButtonQ : MonoBehaviour
     public Image imgIcon; // 스킬 이미지
     public Image imgCool; // Cooldown 이미지
 
-    public bool Use = false;
+    private bool Use = false;
 
     void Start()
     {

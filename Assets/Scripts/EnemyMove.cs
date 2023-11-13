@@ -7,7 +7,7 @@ public class EnemyMove : MonoBehaviour
     public float speed;
     private Rigidbody target;
 
-    public bool isMove = true;
+    private bool isMove = true;
 
     private bool isLive = true;
     private Rigidbody rigid;
