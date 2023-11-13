@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
@@ -15,7 +16,7 @@ public class EnemyMove : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-        target = GameObject.Find("Player").GetComponent<Rigidbody>();
+        target = GameObject.Find("BoxMan@Stand").GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()

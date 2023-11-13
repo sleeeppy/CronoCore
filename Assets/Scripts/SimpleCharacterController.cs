@@ -47,7 +47,7 @@ public class SimpleCharacterController : MonoBehaviour
 
     public void LookMouseCursor()
     {     
-           Ray ray = characterCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = characterCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitResult;
         if (Physics.Raycast(ray, out hitResult))
         {
