@@ -16,6 +16,8 @@ public class SimpleCharacterController : MonoBehaviour
     public float MoveSpeed = 10f;
     public float FireCoolSet = 0.2f;
 
+    public float BulDam = 1f;
+
     void Fire()
     {
         if (FireCool > FireCoolSet)
@@ -84,5 +86,10 @@ public class SimpleCharacterController : MonoBehaviour
         var scroll = Input.mouseScrollDelta * 1.5f;
         // 시야 왜곡을 방지하기 위해서 30~70 사이의 값으로 fieldOfView를 고정해줌
         characterCamera.fieldOfView = Mathf.Clamp(characterCamera.fieldOfView - scroll.y, 30f, 80f);
+    }
+
+    public float BulDamUp()
+    {
+        return BulDam;
     }
 }

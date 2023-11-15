@@ -45,15 +45,13 @@ public class BossSpawn : MonoBehaviour
 
     void TimeOutSet()
     {
-        Instantiate(Boss, transform.position, Quaternion.identity);
-        CoreLevel.GetComponent<CronoCoreLevel>().currentGauge = -1;
+        Instantiate(Boss, transform.position, Quaternion.identity); 
     }
 
     void Set()
     {
         Instantiate(Boss, transform.position, Quaternion.identity);
         InvTime.GetComponent<TimeManager>().InvTimeOn = true;
-        CoreLevel.GetComponent<CronoCoreLevel>().currentGauge = -1;
         Destroy(gameObject);
     }
 }

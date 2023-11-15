@@ -1292,6 +1292,7 @@ MonoBehaviour:
   FireCool: 0
   MoveSpeed: 5
   FireCoolSet: 0.1
+  BulDam: 1
 --- !u!4 &615943338
 Transform:
   m_ObjectHideFlags: 0

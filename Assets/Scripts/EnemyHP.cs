@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
-    public int enemyHP = 10;
+    public float enemyHP = 10;
     private GameObject Gauge;
+
+    private GameObject BulletDamage;
 
     // Update is called once per frame
     void Update()
@@ -14,16 +16,11 @@ public class EnemyHP : MonoBehaviour
         {
             Gauge = GameObject.Find("CoreGauge");
             Gauge.GetComponent<CronoCoreLevel>().currentGauge += 1;
-            Destroy(this.gameObject);
-        }
-    }
 
-    // OnTriggerEnter 함수를 사용하여 IsTrigger가 활성화된 총알과의 충돌을 처리합니다.
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            enemyHP = enemyHP - 1;
+            BulletDamage = GameObject.Find("Player");
+            BulletDamage.GetComponent<SimpleCharacterController>().BulDam += 0.3f;
+
+            Destroy(this.gameObject);
         }
     }
 }

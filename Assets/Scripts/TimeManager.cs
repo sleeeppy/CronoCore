@@ -17,8 +17,8 @@ public class TimeManager : MonoBehaviour
             {
                 timeLeft -= Time.deltaTime;
 
-                string minutes = ((int)timeLeft / 60).ToString();  // 남은 분을 계산합니다.
-                string seconds = (timeLeft % 60).ToString("f2");  // 남은 초를 계산하고, 소수점 둘째 자리까지 표시합니다.
+                string minutes = ((int)timeLeft / 60).ToString();
+                string seconds = (timeLeft % 60).ToString("f2");
 
                 if (timeLeft < 0)
                 {
