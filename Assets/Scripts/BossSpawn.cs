@@ -13,7 +13,7 @@ public class BossSpawn : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; transform.GetChild(i).name != "end"; i++)
+        for (int i = 0; transform.GetChild(i).name != "End"; i++)
         {
             CoreLevel.GetComponent<CronoCoreLevel>().MaxGauge = i + 1;
             CoreLevel.GetComponent<CronoCoreLevel>().CoreGauge.maxValue = i + 1;
@@ -29,7 +29,7 @@ public class BossSpawn : MonoBehaviour
             Invoke("TimeOutSet", 1f);
         }
 
-        if (!SetOn && transform.GetChild(0).name == "end")
+        if (!SetOn && transform.GetChild(0).name == "End")
         {
             if (!TimeOut)
             {
