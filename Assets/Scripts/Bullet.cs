@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
     float speed = 1.0f;
 
     private GameObject Damage;
-    private float Dam;
 
     void Start()
     {
@@ -40,8 +39,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Damage = GameObject.Find("Player");
-            Dam = Damage.GetComponent<SimpleCharacterController>().BulDamUp();
-            other.gameObject.GetComponent<EnemyHP>().enemyHP -= Dam;
+            other.gameObject.GetComponent<EnemyHP>().enemyHP -= Damage.GetComponent<SimpleCharacterController>().BulDamUp();
             Destroy(gameObject);
         }
     }
