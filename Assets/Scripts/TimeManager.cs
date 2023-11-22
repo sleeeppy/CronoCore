@@ -5,11 +5,15 @@ public class TimeManager : MonoBehaviour
 {
     public GameObject bossspawn;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI Timescale;
     private float timeLeft = 120.0f;
     private bool TimeSetBoss = false;
+    private float Scale = 1f;
 
     void Update()
     {
+        Timescale.text = "x  " + Scale;
+
         if (timeLeft >= -3)
         {
             timeLeft -= Time.deltaTime;
@@ -28,6 +32,24 @@ public class TimeManager : MonoBehaviour
             TimeSetBoss = true;
             bossspawn.GetComponent<BossSpawn>().TimeOut = true;
             timerText.text = "";
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            if (Scale < 2f)
+            {
+                Scale += 0.1f;
+                Time.timeScale = Scale;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            if (Scale > 0.5f)
+            {
+                Scale -= 0.1f;
+                Time.timeScale = Scale;
+            }
         }
     }
 }
