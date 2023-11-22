@@ -15,10 +15,14 @@ public class EnemyHP : MonoBehaviour
         if (enemyHP <= 0)
         {
             Gauge = GameObject.Find("CoreGauge");
-            Gauge.GetComponent<CronoCoreLevel>().currentGauge += 1;
+            if (Gauge.GetComponent<CronoCoreLevel>().currentGauge < Gauge.GetComponent<CronoCoreLevel>().MaxGauge)
+            {
 
-            BulletDamage = GameObject.Find("Player");
-            BulletDamage.GetComponent<SimpleCharacterController>().BulDam += 0.3f;
+                Gauge.GetComponent<CronoCoreLevel>().currentGauge += 1;
+
+                BulletDamage = GameObject.Find("Player");
+                BulletDamage.GetComponent<SimpleCharacterController>().BulDam += 0.1f;
+            }
 
             Destroy(this.gameObject);
         }
