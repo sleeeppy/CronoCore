@@ -53,4 +53,9 @@ public class EnemyMove : MonoBehaviour
     {
         isMove = true;
     }
+
+    void OnEnable()
+    {
+        target = GameManager.instance.player.GetComponent<Rigidbody>();
+    }
 }
