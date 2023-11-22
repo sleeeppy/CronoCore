@@ -9,8 +9,17 @@ public class CronoCoreLevel : MonoBehaviour
     public int currentGauge = 0;
     public int MaxGauge;
 
+    private void Start()
+    {
+        CoreGauge.maxValue = MaxGauge;
+    }
+
     void Update()
     {
-        CoreGauge.value = MaxGauge - (MaxGauge - currentGauge);
+        if (currentGauge > MaxGauge)
+        {
+            currentGauge = MaxGauge;
+        }
+        else CoreGauge.value = MaxGauge - (MaxGauge - currentGauge);
     }
 }
