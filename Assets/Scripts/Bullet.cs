@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     bool isFire;
     Vector3 direction;
     [SerializeField]
-    float speed = 1.0f;
+    float speed = 2.0f;
 
     private GameObject Damage;
 
