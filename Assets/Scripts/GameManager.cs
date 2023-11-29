@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void GameRetry()

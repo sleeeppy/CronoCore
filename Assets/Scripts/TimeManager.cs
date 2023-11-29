@@ -23,7 +23,7 @@ public class TimeManager : MonoBehaviour
 
             if (timeLeft < 0)
             {
-                timerText.text = "보스 등장까지 남은 시간 : 0:0.0";
+                timerText.text = "보스 등장까지 남은 시간 : 0:00.0";
             }
             else timerText.text = "보스 등장까지 남은 시간 : " + minutes + ":" + seconds;
         }
@@ -36,7 +36,7 @@ public class TimeManager : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
-            if (Scale < 2f)
+            if (Scale < 1.5f)
             {
                 Scale += 0.1f;
                 Time.timeScale = Scale;
