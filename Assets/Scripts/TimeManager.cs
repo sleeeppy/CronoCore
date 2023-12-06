@@ -14,7 +14,7 @@ public class TimeManager : MonoBehaviour
     {
         Timescale.text = "x  " + Scale;
 
-        if (timeLeft >= -3)
+        if (timeLeft >= -1)
         {
             timeLeft -= Time.deltaTime;
 

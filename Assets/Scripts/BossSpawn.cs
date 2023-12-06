@@ -21,12 +21,7 @@ public class BossSpawn : MonoBehaviour
         if (TimeOut && !spawn)
         {
             spawn = true;
-            Invoke("Set", 1f);
+            Instantiate(Boss, transform.position, Quaternion.identity);
         }
-    }
-
-    void Set()
-    {
-        Instantiate(Boss, transform.position, Quaternion.identity); 
     }
 }

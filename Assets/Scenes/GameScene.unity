@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -177,6 +177,10 @@ PrefabInstance:
     - target: {fileID: 6174694108153847318, guid: eafe64147ebc14942a56b8aa23fb658f, type: 3}
       propertyPath: m_Name
       value: Enemy B
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174694108153847318, guid: eafe64147ebc14942a56b8aa23fb658f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eafe64147ebc14942a56b8aa23fb658f, type: 3}
@@ -1590,7 +1594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c080595f7104ae64fa06c854d20983d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boss: {fileID: 6549399332919834505, guid: 97430aee68839834dbb6200a6a179f1c, type: 3}
+  Boss: {fileID: 6232080965860154820, guid: cb78d08513a9d3e419e0903e35d6b759, type: 3}
   TimeOut: 0
   InvTime: {fileID: 106072614}
   CoreLevel: {fileID: 1262076816}
@@ -2175,6 +2179,10 @@ PrefabInstance:
       value: Enemy A
       objectReference: {fileID: 0}
     - target: {fileID: 1528543826248096, guid: 0eb1dc9b0d8505f45a18313076e1e653, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528543826248096, guid: 0eb1dc9b0d8505f45a18313076e1e653, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -2407,6 +2415,10 @@ PrefabInstance:
     - target: {fileID: 1960062034117444, guid: 9288bdcd172a05947ba0eb1fde7f0346, type: 3}
       propertyPath: m_Name
       value: Enemy C
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960062034117444, guid: 9288bdcd172a05947ba0eb1fde7f0346, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1960062034117444, guid: 9288bdcd172a05947ba0eb1fde7f0346, type: 3}
       propertyPath: m_TagString
