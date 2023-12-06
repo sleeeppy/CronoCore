@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
-    public float enemyHP = 10;
+    public float enemyHP;
     private GameObject Gauge;
+    private GameObject HPup;
 
     private GameObject BulletDamage;
+
+    private void Start()
+    {
+        HPup = GameObject.Find("Timer");
+        enemyHP += HPup.GetComponent<TimeManager>().UP();
+    }
 
     // Update is called once per frame
     void Update()

@@ -56,6 +56,6 @@ public class EnemyMove : MonoBehaviour
 
     void OnEnable()
     {
-        target = GameManager.instance.player.GetComponent<Rigidbody>();
+        target = GameObject.Find("BoxMan@Stand").GetComponent<Rigidbody>();
     }
 }

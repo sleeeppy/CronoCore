@@ -3115,6 +3115,10 @@ PrefabInstance:
       value: BoxMan@Stand
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 1d077ea7661ff8742943f5e1c360378f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1d077ea7661ff8742943f5e1c360378f, type: 3}
       propertyPath: m_TagString
       value: Character
       objectReference: {fileID: 0}

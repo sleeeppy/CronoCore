@@ -9,6 +9,12 @@ public class TimeManager : MonoBehaviour
     private float timeLeft = 10.0f;
     private bool TimeSetBoss = false;
     private float Scale = 1f;
+    public float enemyHPup = 0;
+
+    private void Start()
+    {
+        InvokeRepeating("HPup", 10f, 10f);
+    }
 
     void Update()
     {
@@ -51,5 +57,15 @@ public class TimeManager : MonoBehaviour
                 Time.timeScale = Scale;
             }
         }
+    }
+
+    public float UP()
+    {
+        return enemyHPup;
+    }
+
+    private void HPup()
+    {
+        enemyHPup++;
     }
 }
