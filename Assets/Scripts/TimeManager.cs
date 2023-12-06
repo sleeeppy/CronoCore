@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour
     public GameObject bossspawn;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI Timescale;
-    private float timeLeft = 120.0f;
+    private float timeLeft = 10.0f;
     private bool TimeSetBoss = false;
     private float Scale = 1f;
 

@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c080595f7104ae64fa06c854d20983d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boss: {fileID: 6232080965860154820, guid: cb78d08513a9d3e419e0903e35d6b759, type: 3}
+  Boss: {fileID: 5439959576800521960, guid: 0108e51281bfebd4e92f3916905419ee, type: 3}
   TimeOut: 0
   InvTime: {fileID: 106072614}
   CoreLevel: {fileID: 1262076816}
